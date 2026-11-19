@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f5f7fb">
+  <meta name="description" content="A simple personal life dashboard with tasks, focus timer, and quick links.">
+  <title>Life Dashboard</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body data-theme="light">
+  <main class="dashboard">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Life Dashboard home">
+        <span class="brand-mark">✦</span>
+        <span>daylight<span class="brand-muted">.</span></span>
+      </a>
+      <button id="themeToggle" class="icon-button theme-button" type="button" aria-label="Switch theme" title="Switch theme">☾</button>
+    </header>
+
+    <section class="welcome panel">
+      <div class="welcome-copy">
+        <p class="eyebrow" id="dateDisplay">YOUR DAY, AT A GLANCE</p>
+        <h1 id="greetingText">Good day<span class="accent-dot">.</span></h1>
+        <p class="subheading">Make today count, one step at a time.</p>
+        <form id="nameForm" class="name-form">
+          <label class="sr-only" for="nameInput">Your name</label>
+          <input id="nameInput" type="text" maxlength="50" placeholder="What should we call you?" autocomplete="given-name">
+          <button class="button button-soft" type="submit">Save name</button>
+        </form>
+        <p id="nameError" class="form-message" aria-live="polite"></p>
+      </div>
+      <div class="clock-wrap">
+        <div id="clockDisplay" class="clock">--:--:--</div>
+        <div class="clock-caption">LOCAL TIME</div>
+      </div>
+    </section>
+
+    <section class="panel focus-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">STAY IN THE ZONE</p>
+          <h2>Focus session</h2>
+        </div>
+        <span class="pill"><span class="status-dot"></span> POMODORO</span>
+      </div>
+      <div class="timer-face">
+        <svg class="timer-ring" viewBox="0 0 220 220" aria-hidden="true">
+          <circle class="ring-track" cx="110" cy="110" r="96"></circle>
+          <circle id="timerProgress" class="ring-progress" cx="110" cy="110" r="96"></circle>
+        </svg>
+        <div class="timer-content">
+          <div id="timerDisplay" class="timer-time">25:00</div>
+          <div id="timerStatus" class="timer-status">READY WHEN YOU ARE</div>
+        </div>
+      </div>
+      <div class="timer-controls">
+        <button id="timerStart" class="button button-primary" type="button">▶ Start</button>
+        <button id="timerStop" class="button button-soft" type="button">Ⅱ Pause</button>
+        <button id="timerReset" class="button button-ghost" type="button">↻ Reset</button>
+      </div>
+    </section>
+
+    <section class="panel tasks-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">MAKE IT HAPPEN</p>
+          <h2>My tasks <span id="taskCount" class="count-badge">0</span></h2>
+        </div>
+        <span class="heading-note">Small steps add up.</span>
+      </div>
+      <form id="taskForm" class="add-form">
+        <label class="sr-only" for="taskInput">Add a task</label>
+        <input id="taskInput" type="text" maxlength="200" placeholder="Add a task to your list..." required>
+        <button class="button button-primary add-button" type="submit" aria-label="Add task">+</button>
+      </form>
+      <p id="taskMessage" class="form-message" aria-live="polite"></p>
+      <ul id="taskList" class="task-list"></ul>
+      <div id="emptyTasks" class="empty-state">
+        <span class="empty-icon">✧</span>
+        <p>Your list is clear.</p>
+        <span>Add a task to get started.</span>
+      </div>
+    </section>
+
+    <section class="panel links-panel">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">YOUR EVERYDAY TOOLS</p>
+          <h2>Quick links</h2>
+        </div>
+        <span class="heading-note" id="linkCount">0 / 20 saved</span>
+      </div>
+      <form id="linkForm" class="link-form">
+        <label class="sr-only" for="linkLabel">Link name</label>
+        <input id="linkLabel" type="text" maxlength="50" placeholder="Link name" required>
+        <label class="sr-only" for="linkUrl">Website URL</label>
+        <input id="linkUrl" type="url" maxlength="2048" placeholder="https://example.com" required>
+        <button class="button button-primary link-add-button" type="submit">Add link</button>
+      </form>
+      <p id="linkMessage" class="form-message" aria-live="polite"></p>
+      <div id="quickLinks" class="quick-links"></div>
+      <div id="emptyLinks" class="empty-state compact-empty">
+        <span class="empty-icon">↗</span>
+        <p>No quick links yet.</p>
+        <span>Add the websites you use most.</span>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>Designed for a more intentional day.</span>
+      <span>DAYLIGHT <span class="accent-dot">✦</span></span>
+    </footer>
+  </main>
+</body>
+</html>
